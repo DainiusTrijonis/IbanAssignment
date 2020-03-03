@@ -1,4 +1,4 @@
 # IbanAssignment
 
-FrontEnd ReactJS </br>
-BackEnd spring rest web service
+FrontEnd ReactJS  Yarn package manager  </br>
+BackEnd java spring rest web service   
