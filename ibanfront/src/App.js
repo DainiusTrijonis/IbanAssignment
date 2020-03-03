@@ -24,7 +24,6 @@ class App extends React.Component {
       fileOutput: ''
     }
 
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.acceptFile = this.acceptFile.bind(this);
@@ -41,7 +40,6 @@ class App extends React.Component {
     
   }
 
-
   acceptFile(event) {
     var file = event.target.files[0];
     var filename = file.name;
@@ -57,7 +55,7 @@ class App extends React.Component {
     const data = this;
     reader.onloadend = function() {
       data.setState({
-        fileData: reader.result.split('\n')
+        fileData: reader.result.split(' ').join('').split('\n')
       })
     }
   }
@@ -102,10 +100,12 @@ class App extends React.Component {
 
   }
 
-
   validateIban(iban){
     if(iban.length > 0) {
       try{
+
+        iban = iban.split(' ').join('');
+        console.log(iban);
         axios.get(`http://localhost:8080/iban/${iban}`).then(res => {
           if(res.data===true) {
             this.setState({
@@ -169,7 +169,6 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
 
 export default App;
